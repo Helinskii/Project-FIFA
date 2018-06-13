@@ -2,6 +2,18 @@
 
 from bs4 import BeautifulSoup
 from requests import get
+from colorama import Fore, Back, Style
+
+print('Glossary')
+print('GP:\tGames Played')
+print('W:\tWins')
+print('D:\tDraws')
+print('L:\tLosses')
+print('F:\tGoals For')
+print('A:\tGoals Against')
+print('GD:\tGoal Difference')
+print('P:\tPoints')
+print('\n')
 
 url_standings = 'http://www.espn.in/football/table/_/league/fifa.world'
 html = get(url_standings)
@@ -34,10 +46,9 @@ group_track = 0
 for group in all_groups:
     row_list = []
     if divide_counter == 0:
-        print(groups[group_track] + '\t\t\t', end = '')
+        print(Fore.BLUE + Style.BRIGHT + groups[group_track] + '\t\t\t', end = '')
         for category in categories:
             print(category + '\t', end = '')
-        print('\n')
         divide_counter += 1
         group_track += 1
 
@@ -47,7 +58,7 @@ for group in all_groups:
     team_number = row_list[0][0]
     team_name = row_list[0][1:-3]
     team_abbr = row_list[0][-3:]
-
+    print(Style.RESET_ALL)
     print(team_number + ' ', end = '')
     print(team_name, end = '')
     if len(team_name) > 5:
@@ -57,7 +68,6 @@ for group in all_groups:
 
     for i in range(1, len(row_list)):
         print(row_list[i] + '\t', end = '')
-    print('\n')
     divide_counter += 1
     if divide_counter > 4:
         print('\n')
