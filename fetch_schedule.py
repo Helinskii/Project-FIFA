@@ -20,7 +20,7 @@ html = get(url_schedule)
 
 page = soup(html.content, 'html.parser')
 
-matches = page.find_all('div', {'class':'fixture'})
+matches = page.find_all('div', attrs = {'class':'fixture'})
 matches = matches[:48]
 
 for match in matches:
