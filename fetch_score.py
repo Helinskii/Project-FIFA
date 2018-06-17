@@ -21,6 +21,7 @@ page = soup(html.content, 'html.parser')
 results = page.find_all('div', attrs = {'class':'result'})
 el_to_remove = ['PEN', 'OG', ',']
 
+print('\n')
 print('Match\t', end = '')
 print('\t\tDate\t', end = '')
 print('\tScore\t')
@@ -49,19 +50,28 @@ for result in results:
     home_scorers = list(filter(lambda a: a not in el_to_remove, home_score_list))
     away_scorers = list(filter(lambda a: a not in el_to_remove, away_score_list))
 
-    print(home_team + ' vs. ' + away_team + '\t', end = '')
+    print(Fore.GREEN + home_team + ' vs. ' + away_team + '\t', end = '')
     print(date + '\t', end = '')
     print(score)
+    print(Style.RESET_ALL, end = '')
+    if home_scorers:
+        print(Fore.RED + home_team)
+        print(Style.RESET_ALL)
+        for home_scorer in home_scorers:
+            if not check_int(home_scorer):
+                print(home_scorer + ' ', end = '')
+            else:
+                print('(' + home_scorer + ')')
 
-    # Test
-    for home_scorer, away_scorer in itertools.zip_longest(home_scorers, away_scorers, fillvalue = ''):
-        if not check_int(home_scorer):
-            print(home_scorer + ' ', end = '')
-        else:
-            print('(' + home_scorer + ')\t', end = '')
+    if away_scorers:
+        print('\n')
+        print(Fore.BLUE + away_team)
+        print(Style.RESET_ALL)
+        for away_scorer in away_scorers:
+            if not check_int(away_scorer):
+                print(away_scorer + ' ', end = '')
+            else:
+                print('(' + away_scorer + ')')
 
-        if not check_int(away_scorer):
-            print(away_scorer + ' ',  end = '')
-        else:
-            print('(' + away_scorer + ')')
+    print(Style.RESET_ALL, end = '')
     print('\n')

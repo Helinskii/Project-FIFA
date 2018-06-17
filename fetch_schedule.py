@@ -50,7 +50,10 @@ def fetch():
             print('\t' + away_team + '\t', end = '')
         else:
             print(away_team + '\t', end = '')
-        print('\t' + score + '\t')
+        if len(away_team) < 8:
+            print('\t' + score + '\t')
+        else:
+            print(score + '\t')
 
     now = dt.now()
     cur_date = str(now.strftime("%d %b %Y"))
