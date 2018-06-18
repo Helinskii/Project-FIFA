@@ -1,3 +1,5 @@
+# Prints live score along with status and scorers
+
 from bs4 import BeautifulSoup as soup
 from requests import get
 from colorama import Fore, Back, Style

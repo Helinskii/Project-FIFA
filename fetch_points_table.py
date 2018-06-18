@@ -1,4 +1,4 @@
-# Author: Helinskii
+# Fetches the points table
 
 from bs4 import BeautifulSoup
 from requests import get

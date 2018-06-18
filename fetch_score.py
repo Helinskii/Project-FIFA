@@ -1,3 +1,5 @@
+# Fetches past results along with scorers of each match
+
 from bs4 import BeautifulSoup as soup
 from requests import get
 from colorama import Fore, Back, Style
