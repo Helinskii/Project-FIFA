@@ -20,8 +20,8 @@ FIFA - http://www.fifa.com
 **Highlights all _Argentina_ matches**<br>
 *Can be changed in the source code*
 
-![Menu + Schedule](images/menu.jpg?raw=true "Menu")<br>
+![Menu + Schedule](screenshots/menu.jpg?raw=true "Menu")<br>
 ### _Points Table_
-![Points Table](images/points.jpg?raw=true "Points Table")<br>
+![Points Table](screenshots/points.jpg?raw=true "Points Table")<br>
 ### _Past Results_
-![Past Results](images/results.jpg?raw=true "Past Results")
+![Past Results](screenshots/results.jpg?raw=true "Past Results")
