@@ -25,3 +25,4 @@ FIFA - http://www.fifa.com
 ![Points Table](screenshots/points.jpg?raw=true "Points Table")<br>
 ### _Past Results_
 ![Past Results](screenshots/results.jpg?raw=true "Past Results")
+### _Live Score coming up soon!_
