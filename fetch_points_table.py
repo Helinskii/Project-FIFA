@@ -1,9 +1,18 @@
+# Developer     - Shubham Saha
+# Github        - https://github.com/Helinskii
+# Telegram      - https://t.me/Helinskii
+# @license      - Code and Contributions have 'MIT License'
+#                 More Details: LICENSE
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software with proper credit to the original author.
+
 # Fetches the points table
 
+# Import libraries
 from bs4 import BeautifulSoup
 from requests import get
 from colorama import Fore, Back, Style
 
+# Main fetch function
 def fetch():
 
     print('Glossary')
@@ -17,6 +26,7 @@ def fetch():
     print('P:\tPoints')
     print('\n')
 
+    # URL for scraping the data
     url_standings = 'http://www.espn.in/football/table/_/league/fifa.world'
     html = get(url_standings)
     page = BeautifulSoup(html.content, 'html.parser')
@@ -28,6 +38,7 @@ def fetch():
     categories = []
     count_categories = 0
 
+    # Loop through all the 'headings' and make lists out of them
     for head in heads:
         count_group_name = 0
         for title in head:
@@ -45,6 +56,7 @@ def fetch():
     group_counter = 0
     group_track = 0
 
+    # Loop through all the teams segregated in to groups
     for group in all_groups:
         row_list = []
         if divide_counter == 0:

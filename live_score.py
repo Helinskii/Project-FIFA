@@ -1,5 +1,6 @@
 # Prints live score along with status and scorers
 
+# Import libraries
 from bs4 import BeautifulSoup as soup
 from requests import get
 from colorama import Fore, Back, Style
@@ -7,8 +8,10 @@ import datetime
 import time
 import sys
 
+# Elements to be removed from the 'scoreres_list'
 el_to_remove = ['PEN', 'OG', ',']
 
+# Checks if current time falls within a live match time
 def check_time(hour, minute):
     now = datetime.datetime.now()
 
@@ -22,6 +25,7 @@ def check_time(hour, minute):
     else:
         return False
 
+# Checks if text is an integer or a string
 def check_int(text):
     if text == '':
         return False
@@ -31,6 +35,7 @@ def check_int(text):
     except ValueError:
         return False
 
+# Fetches the 'blog' page for the live match
 def cur_match_link():
     url_schedule = 'https://www.fifa.com/worldcup/matches/#groupphase'
     html = get(url_schedule)
@@ -44,6 +49,7 @@ def cur_match_link():
     now = datetime.datetime.now()
     cur_date = str(now.strftime("%d %b %Y"))
 
+    # Loop to find an instance of a match is currently live
     for match in matches:
         info = match.select('.fi-mu__info')[0]
         match_info = info.text.split()
@@ -67,6 +73,7 @@ def cur_match_link():
 
     return cur_match_link
 
+# Main fetch function
 def fetch():
     url_score = cur_match_link()
     if url_score:

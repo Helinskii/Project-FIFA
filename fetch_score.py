@@ -1,11 +1,13 @@
 # Fetches past results along with scorers of each match
 
+# Import libraries
 from bs4 import BeautifulSoup as soup
 from requests import get
 from colorama import Fore, Back, Style
 from datetime import datetime as dt
 import itertools
 
+# Check if text is integer or string
 def check_int(text):
     if text == '':
         return False
@@ -15,7 +17,9 @@ def check_int(text):
     except ValueError:
         return False
 
+# Main fetch function
 def fetch():
+    # URL to scrape data from
     url_schedule = 'https://www.fifa.com/worldcup/matches/#groupphase'
     html = get(url_schedule)
 
@@ -29,6 +33,7 @@ def fetch():
     print('\t\tDate\t', end = '')
     print('\tScore\t')
 
+    # Loop to find all instances of past matches
     for result in results:
         info = result.select('.fi-mu__info')[0]
         match_info = info.text.split()
@@ -40,6 +45,7 @@ def fetch():
         home_team = teams[0].text.split()[0]
         away_team = teams[1].text.split()[0]
 
+        # Creates a link for a webpage that provides comprehensive information
         score = result.find('span', attrs = {'class':'fi-s__scoreText'}).text.strip()
         link = result.parent['href']
         link = 'http://www.fifa.com' + link
@@ -50,6 +56,7 @@ def fetch():
         home_score_list = score_list[0].text.split()
         away_score_list = score_list[1].text.split()
 
+        # List of scorers from both teams
         home_scorers = list(filter(lambda a: a not in el_to_remove, home_score_list))
         away_scorers = list(filter(lambda a: a not in el_to_remove, away_score_list))
 
